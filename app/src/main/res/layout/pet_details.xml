@@ -26,7 +26,7 @@
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textSize="10dp"
-        android:letterSpacing="0.5"
+        android:letterSpacing="0.2"
         android:id="@+id/pet-details-name-label" />
 
     <TextView
@@ -55,7 +55,7 @@
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textSize="10dp"
-        android:letterSpacing="0.5"
+        android:letterSpacing="0.2"
         android:id="@+id/pet-details-specie-label" />
 
     <TextView
@@ -84,7 +84,7 @@
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textSize="10dp"
-        android:letterSpacing="0.5"
+        android:letterSpacing="0.2"
         android:id="@+id/pet-details-foods-like-label" />
 
     <TextView
@@ -113,7 +113,7 @@
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textSize="10dp"
-        android:letterSpacing="0.5"
+        android:letterSpacing="0.2"
         android:id="@+id/pet-details-foods-dislike-label" />
 
     <TextView
