@@ -19,7 +19,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -29,22 +29,25 @@
                 android:layout_marginTop="4dp"
                 android:text="Pet Name"
                 android:textStyle="bold"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:id="@+id/pet-name" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="14dp"
+                android:layout_height="12dp"
                 android:text="specie"
                 android:textAllCaps="true"
-                android:letterSpacing="5"
-                android:textSize="10dp" />
+                android:letterSpacing="0.2"
+                android:textSize="8dp"
+                android:id="@+id/pet-specie" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Price: $ 99.00"
-                android:layout_marginTop="8dp"
-                android:textSize="10dp" />
+                android:layout_marginTop="4dp"
+                android:textSize="12dp"
+                android:id="@+id/pet-price" />
 
         </LinearLayout>
 
@@ -57,7 +60,7 @@
                 android:layout_height="32dp"
                 android:layout_marginTop="16dp"
                 android:text="Buy"
-                android:background="@color/buttonBackground"
+                android:background="@drawable/button_background"
                 android:textColor="@color/colorPrimary"/>
 
         </LinearLayout>
