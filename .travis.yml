@@ -5,6 +5,7 @@ sudo: false
 env:
   global:
     - ANDROID_API=28
+    - EMULATOR_API=21
     - ANDROID_BUILD_TOOLS=27.0.3
 
 android:
@@ -18,7 +19,7 @@ components:
 # The BuildTools version used by your project
 - build-tools-$ANDROID_BUILD_TOOLS
 - android-$ANDROID_API
-#- android-$EMULATOR_API
+- android-$EMULATOR_API
 
 # Additional components
 - extra-google-google_play_services
@@ -28,8 +29,8 @@ components:
 
 # Specify at least one system image,
 # if you need to run emulator(s) during your tests
-#- sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API
-#- sys-img-armeabi-v7a-android-$EMULATOR_API
+- sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API
+- sys-img-armeabi-v7a-android-$EMULATOR_API
 
 # Support library
 - extra-android-support
@@ -52,13 +53,14 @@ cache:
   - $HOME/.gradle/wrapper/
   - $HOME/.android/build-cache
 
-#before_script:
-#- echo no | android create avd --force -n test -t $ANDROID_API --abi armeabi-v7a
-#- emulator -avd test -no-skin -no-audio -no-window &
-#- android-wait-for-emulator
-#- adb shell input keyevent 82 &
-#
-# script:
-#   - ./gradlew build check jacocoTestReport
+before_script:
+- echo no | android create avd --force -n test -t $ANDROID_API --abi armeabi-v7a
+- emulator -avd test -no-skin -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
+
+script:
+  - ./gradlew build check jacocoTestReport
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
