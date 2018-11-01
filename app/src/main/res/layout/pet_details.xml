@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/pet-image"
+        android:background="#dfdfdf" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Pet Name:"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textSize="10dp"
+        android:letterSpacing="0.2"
+        android:id="@+id/pet-details-name-label" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-details-name-label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Meowsy"
+        android:textSize="16dp"
+        android:id="@+id/pet-details-name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-details-name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Specie:"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textSize="10dp"
+        android:letterSpacing="0.2"
+        android:id="@+id/pet-details-specie-label" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-details-specie-label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Cat"
+        android:textSize="16dp"
+        android:id="@+id/pet-details-specie" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-details-specie"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Foods it like:"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textSize="10dp"
+        android:letterSpacing="0.2"
+        android:id="@+id/pet-details-foods-like-label" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-details-foods-like-label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Tuna, Catnip"
+        android:textSize="16dp"
+        android:id="@+id/pet-details-foods-like" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-details-foods-like"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Foods it don't likes:"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textSize="10dp"
+        android:letterSpacing="0.2"
+        android:id="@+id/pet-details-foods-dislike-label" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/pet-details-foods-dislike-label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Ham, Zucchini"
+        android:textSize="16dp"
+        android:id="@+id/pet-details-foods-dislike" />
+
+</android.support.constraint.ConstraintLayout>
