@@ -112,8 +112,6 @@ public class Async extends AsyncTask<String, Void, List<Pets>> {
 
         }
 
-
-
     }
 
 }
