@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.brunoorocha.petshop.R;
 import com.example.brunoorocha.petshop.model.Foods;
 import com.example.brunoorocha.petshop.view.MainActivity;
 import com.example.brunoorocha.petshop.util.UrlUtils;
@@ -29,6 +30,18 @@ public class Async extends AsyncTask<String, Void, List<Pets>> {
     OnLoadEventListener mListener = null;
     Context mContext = null;
     ProgressDialog progressDialog;
+
+    private int[] catsImageResources = {
+            R.drawable.cat1,
+            R.drawable.cat2,
+            R.drawable.cat3
+    };
+
+    private int[] dogsImageResources = {
+            R.drawable.dog1,
+            R.drawable.dog2,
+            R.drawable.dog3
+    };
 
     public Async(OnLoadEventListener mListener, Context mContext) {
         this.mListener = mListener;
@@ -80,7 +93,7 @@ public class Async extends AsyncTask<String, Void, List<Pets>> {
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray jsonArray = jsonObject.getJSONArray("pets");
-
+            int catResourceCounter = 0, dogResourceCounter = 0;
 
             for(int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObj = new JSONObject(jsonArray.getString(i));
@@ -102,6 +115,18 @@ public class Async extends AsyncTask<String, Void, List<Pets>> {
 
                 for (int j = 0; j < dislikes.length; j++) {
                     dislikes[j] = jsonDislikes.getString(j);
+                }
+
+
+                if (pets.getSpecies().contains("cat")) {
+                    if (catResourceCounter > 2) catResourceCounter = 0;
+                    pets.setImageResourceId(this.catsImageResources[catResourceCounter]);
+                    catResourceCounter++;
+                }
+                else if (pets.getSpecies().contains("dog")) {
+                    if (dogResourceCounter> 2) dogResourceCounter= 0;
+                    pets.setImageResourceId(this.dogsImageResources[dogResourceCounter]);
+                    dogResourceCounter++;
                 }
 
                 pets.setFoods(new Foods(likes, dislikes));

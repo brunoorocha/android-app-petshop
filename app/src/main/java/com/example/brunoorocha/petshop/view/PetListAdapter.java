@@ -58,6 +58,7 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHold
 
         String priceFormat = String.format("Price: $ %s.00", this.pets.get(i).getPrice());
         viewHolder.petPrice.setText(priceFormat);
+        viewHolder.petThumbnail.setImageResource(this.pets.get(i).getImageResourceId());
     }
 
     @Override

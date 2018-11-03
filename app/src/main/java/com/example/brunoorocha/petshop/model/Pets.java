@@ -33,12 +33,19 @@ public class Pets implements Serializable {
 
     public void setPrice(String price) { this.price = price; }
 
+    public int getImageResourceId() { return imageResourceId; }
+
+    public void setImageResourceId(int imageResourceId) { this.imageResourceId = imageResourceId; }
+
     private String name, species, price;
+    private int imageResourceId;
     private Foods foods;
 
-    public Pets(String name, String species, Foods foods) {
+    public Pets(String name, String species, String price, int imageResourceId, Foods foods) {
         this.name = name;
         this.species = species;
+        this.price = price;
+        this.imageResourceId = imageResourceId;
         this.foods = foods;
     }
 
