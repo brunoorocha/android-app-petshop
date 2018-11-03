@@ -1,4 +1,4 @@
-package com.example.brunoorocha.petshop;
+package com.example.brunoorocha.petshop.model;
 
 public class Foods {
 

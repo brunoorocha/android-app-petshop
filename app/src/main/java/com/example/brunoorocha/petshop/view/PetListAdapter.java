@@ -1,9 +1,10 @@
-package com.example.brunoorocha.petshop;
+package com.example.brunoorocha.petshop.view;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +12,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.brunoorocha.petshop.R;
+import com.example.brunoorocha.petshop.model.Pets;
+
+import java.util.List;
+
 public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHolder> {
 
     private Context mContext;
+    private List<Pets> pets;
     private int itemsCount;
 
     public PetListAdapter(Context mContext, int itemsCount) {
         this.mContext = mContext;
         this.itemsCount = itemsCount;
+    }
+
+    public void setPets(List<Pets> pets) {
+        this.pets = pets;
     }
 
     @NonNull
@@ -29,11 +40,11 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHold
         LayoutInflater inflater = LayoutInflater.from(this.mContext);
         view = inflater.inflate(R.layout.pet_view, viewGroup, false);
 
-        ViewHolder viewHolder = new ViewHolder(view);
+        final ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.petViewItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPetDetailsView();
+                showPetDetailsView(viewHolder.getAdapterPosition());
             }
         });
 
@@ -42,15 +53,21 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        viewHolder.petName.setText(this.pets.get(i).getName());
+        viewHolder.petSpecie.setText(this.pets.get(i).getSpecies());
 
+        String priceFormat = String.format("Price: $ %s.00", this.pets.get(i).getPrice());
+        viewHolder.petPrice.setText(priceFormat);
     }
 
     @Override
     public int getItemCount() {
-        return this.itemsCount;
+        return this.pets.size();
     }
 
-    private void showPetDetailsView() {
+    private void showPetDetailsView(int index) {
+        Pets pet = this.pets.get(index);
+        
         Intent intent = new Intent(this.mContext, PetDetails.class);
         this.mContext.startActivity(intent);
     }

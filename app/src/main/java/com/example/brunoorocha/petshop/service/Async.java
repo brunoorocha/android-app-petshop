@@ -1,8 +1,13 @@
-package com.example.brunoorocha.petshop;
+package com.example.brunoorocha.petshop.service;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
+
+import com.example.brunoorocha.petshop.view.MainActivity;
+import com.example.brunoorocha.petshop.util.UrlUtils;
+import com.example.brunoorocha.petshop.model.Pets;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,18 +22,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Async extends AsyncTask<String, Void, List<Pets>> {
-    MainActivity mainActivity;
+
+    OnLoadEventListener mListener = null;
+    Context mContext = null;
     ProgressDialog progressDialog;
 
-    public Async(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    public Async(OnLoadEventListener mListener, Context mContext) {
+        this.mListener = mListener;
+        this.mContext = mContext;
     }
+
     @Override
     public void onPreExecute() {
-        progressDialog = new ProgressDialog(mainActivity);
-        progressDialog.setTitle("Pets inventory");
-        progressDialog.setMessage("Searching for pets list...");
-        progressDialog.show();
+        if (this.mContext != null) {
+            progressDialog = new ProgressDialog(mContext);
+            progressDialog.setTitle("Pets inventory");
+            progressDialog.setMessage("Searching for pets list...");
+            progressDialog.show();
+        }
     }
 
     @Override
@@ -74,6 +85,7 @@ public class Async extends AsyncTask<String, Void, List<Pets>> {
                 Pets pets = new Pets();
                 pets.setName(jsonObj.getString("name"));
                 pets.setSpecies(jsonObj.getString("species"));
+                pets.setPrice(jsonObj.getString("price"));
 
                 /*
                     TO DO - Foods
@@ -95,23 +107,19 @@ public class Async extends AsyncTask<String, Void, List<Pets>> {
         progressDialog.dismiss();
 
         if(result.size() > 0) {
-            StringBuffer stringBuffer = new StringBuffer();
-            for(Pets pets : result) {
-                stringBuffer.append(pets.getName() + "\n");
-                stringBuffer.append(pets.getSpecies() + "\n");
-                stringBuffer.append("-----------"+"\n");
-            }
-//            MainActivity.textView.setText(stringBuffer);
+            this.mListener.onLoadEvent(result);
         } else {
             AlertDialog.Builder alert =
-                    new AlertDialog.Builder(mainActivity);
+                    new AlertDialog.Builder(this.mContext);
             alert.setTitle("Pets inventory");
             alert.setMessage("Sorry! Info ont available");
             alert.setPositiveButton("OK", null);
             alert.create().show();
-
         }
 
     }
 
+    public interface OnLoadEventListener {
+        void onLoadEvent(List<Pets> pets);
+    }
 }

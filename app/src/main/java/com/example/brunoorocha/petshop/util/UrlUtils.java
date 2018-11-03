@@ -1,4 +1,4 @@
-package com.example.brunoorocha.petshop;
+package com.example.brunoorocha.petshop.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

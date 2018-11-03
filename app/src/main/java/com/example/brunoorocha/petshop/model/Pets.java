@@ -1,4 +1,6 @@
-package com.example.brunoorocha.petshop;
+package com.example.brunoorocha.petshop.model;
+
+import com.example.brunoorocha.petshop.model.Foods;
 
 public class Pets {
     public String getName() {
@@ -25,7 +27,11 @@ public class Pets {
         this.foods = foods;
     }
 
-    private String name, species;
+    public String getPrice() { return price; }
+
+    public void setPrice(String price) { this.price = price; }
+
+    private String name, species, price;
     private Foods foods;
 
     public Pets(String name, String species, Foods foods) {
@@ -35,7 +41,5 @@ public class Pets {
     }
 
     public Pets() {}
-
-
 
 }
