@@ -1,6 +1,8 @@
 package com.example.brunoorocha.petshop.model;
 
-public class Foods {
+import java.io.Serializable;
+
+public class Foods implements Serializable {
 
     private String[] likes, dislikes;
 

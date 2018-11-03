@@ -4,10 +4,13 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
+import com.example.brunoorocha.petshop.model.Foods;
 import com.example.brunoorocha.petshop.view.MainActivity;
 import com.example.brunoorocha.petshop.util.UrlUtils;
 import com.example.brunoorocha.petshop.model.Pets;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -81,16 +84,27 @@ public class Async extends AsyncTask<String, Void, List<Pets>> {
 
             for(int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObj = new JSONObject(jsonArray.getString(i));
-
+                JSONObject foods = jsonObj.getJSONObject("foods");
                 Pets pets = new Pets();
+
                 pets.setName(jsonObj.getString("name"));
                 pets.setSpecies(jsonObj.getString("species"));
                 pets.setPrice(jsonObj.getString("price"));
 
-                /*
-                    TO DO - Foods
-                 */
+                JSONArray jsonLikes = foods.getJSONArray("likes");
+                JSONArray jsonDislikes = foods.getJSONArray("dislikes");
+                String[] likes = new String[jsonLikes.length()];
+                String[] dislikes = new String[jsonDislikes.length()];
 
+                for (int j = 0; j < likes.length; j++) {
+                    likes[j] = jsonLikes.getString(j);
+                }
+
+                for (int j = 0; j < dislikes.length; j++) {
+                    dislikes[j] = jsonDislikes.getString(j);
+                }
+
+                pets.setFoods(new Foods(likes, dislikes));
                 myPets.add(pets);
             }
 

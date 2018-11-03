@@ -67,8 +67,8 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHold
 
     private void showPetDetailsView(int index) {
         Pets pet = this.pets.get(index);
-        
         Intent intent = new Intent(this.mContext, PetDetails.class);
+        intent.putExtra("pet", pet);
         this.mContext.startActivity(intent);
     }
 

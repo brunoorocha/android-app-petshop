@@ -2,7 +2,9 @@ package com.example.brunoorocha.petshop.model;
 
 import com.example.brunoorocha.petshop.model.Foods;
 
-public class Pets {
+import java.io.Serializable;
+
+public class Pets implements Serializable {
     public String getName() {
         return name;
     }

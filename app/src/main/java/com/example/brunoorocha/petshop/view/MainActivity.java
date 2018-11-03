@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements PetListPresenter.
     private void setupRecyclerAdapterWithPets(List<Pets> pets) {
         PetListAdapter adapter = new PetListAdapter(this, 10);
         adapter.setPets(pets);
-
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         this.recyclerView.setAdapter(adapter);
     }
