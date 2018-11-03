@@ -27,8 +27,8 @@ public class PetDetails extends AppCompatActivity {
         String likesConcated = TextUtils.join(", ", pet.getFoods().getLikes());
         String dislikesConcated = TextUtils.join(", ", pet.getFoods().getDislikes());
 
-        Log.i("IMAGE_ID", ""+ pet.getImageResourceId());
         petImageView.setImageResource(pet.getImageResourceId());
+        petImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         petNameTextView.setText(pet.getName());
         petSpeciesTextView.setText(pet.getSpecies());
         petFoodsLikeTextView.setText(likesConcated);

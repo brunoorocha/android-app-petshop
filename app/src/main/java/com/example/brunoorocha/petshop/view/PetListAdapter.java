@@ -90,6 +90,8 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHold
             petThumbnail = itemView.findViewById(R.id.pet_thumbnail);
             petViewItem = itemView.findViewById(R.id.pet_view_item);
 
+            petThumbnail.setClipToOutline(true);
+            petThumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
 
     }
