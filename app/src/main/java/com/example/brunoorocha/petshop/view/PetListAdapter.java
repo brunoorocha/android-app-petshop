@@ -58,6 +58,7 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHold
 
         String priceFormat = String.format("Price: $ %s.00", this.pets.get(i).getPrice());
         viewHolder.petPrice.setText(priceFormat);
+        viewHolder.petThumbnail.setImageResource(this.pets.get(i).getImageResourceId());
     }
 
     @Override
@@ -89,6 +90,8 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.ViewHold
             petThumbnail = itemView.findViewById(R.id.pet_thumbnail);
             petViewItem = itemView.findViewById(R.id.pet_view_item);
 
+            petThumbnail.setClipToOutline(true);
+            petThumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
 
     }
