@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.brunoorocha.petshop">
-    <uses-permission android:name ="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,18 +17,23 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
-        <activity android:name=".view.PetDetails"></activity>
+        <activity android:name=".view.PetDetails" />
 
         <receiver android:name=".PowerConnectionReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
+        <provider
+            android:authorities="com.example.com.example.brunoorocha.petshop.UserProvider"
+            android:name=".UserProvider">
+        </provider>
 
+        <activity android:name=".Activity2">
+
+        </activity>
     </application>
 
 </manifest>
